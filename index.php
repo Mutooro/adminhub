@@ -2,11 +2,31 @@
 include '../emg_admin/config.php';
 
 session_start();
+// After successful login
+$_SESSION['login_time'] = time();
 
-if(!isset($_SESSION['name'])){
-    header("Location: ../indexx.php");
-    exit;
+
+// Check if the user just logged in
+if (isset($_SESSION['name']) && isset($_SESSION['login_time'])) {
+	$sessionTimeoutSeconds = 60; // Set the session timeout to 30 minutes (1800 seconds)
+
+    // Calculate the elapsed time since login
+    $elapsedTime = time() - $_SESSION['login_time'];
+
+    // Check if the elapsed time exceeds the session timeout
+    if ($elapsedTime > $sessionTimeoutSeconds) {
+        // Session has timed out, perform necessary actions
+        // For example, you can unset session variables and redirect the user to the login page
+        unset($_SESSION['login_time']);
+        header("Location: ../index.php"); // Replace "login.php" with your actual login page URL
+        exit;
+    }
+} else {
+    // User is not logged in, handle accordingly
+	header('Location: ../index.php"');
 }
+
+
 
 
 ?>
@@ -74,7 +94,7 @@ if(!isset($_SESSION['name'])){
 				</a>
 			</li>
 			<li>
-				<a href="#" class="logout">
+				<a href="#" class="logout" id="logoutLink">
 					<i class='bx bxs-log-out-circle'></i>
 					<span class="text">Logout</span>
 				
@@ -174,7 +194,7 @@ if(!isset($_SESSION['name'])){
 
 						?>
 						</h3>
-						<p>Slected Players</p>
+						<p>Selected Players</p>
 					</span>
 				</li>
 				<li>
@@ -196,7 +216,7 @@ if(!isset($_SESSION['name'])){
 
 						?>
 						</h3>
-						<p>registered Teams</p>
+						<p>Registered Teams</p>
 					</span>
 				</li>
 			</ul>
@@ -313,4 +333,11 @@ if(!isset($_SESSION['name'])){
 
 	<script src="script.js"></script>
 </body>
+<script>
+document.getElementById('logoutLink').onclick = function(){
+	if(confirm("Are you sure u want to log out?")){
+		window.location.href="../logout.php";
+	}
+}
+</script>
 </html>
