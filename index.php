@@ -235,9 +235,7 @@ if(!isset($_SESSION['name'])){
 							  
 							  $hometeam = $rows['loss'];
 							  $awayteam = $rows['draws'];
-							//   $scrdf = $rows['scoredfor'];
-							//   $scrda = $rows['scoredagainst'];
-							//   $gd = $rows['goaldifference'];
+						
 							  $pts = $rows['points'];
 						  
 							  echo '<tr>
@@ -254,9 +252,7 @@ if(!isset($_SESSION['name'])){
 							  <td>'.$pts.'</td>
 							  
 							</tr>';
-						  /*<button name="update" class ="btn btn-primary"><a href="update.php?updateid='.$id.'"></a>UPDATE</button>
-						  <button  name="delete" class ="btn btn-warning><a href="imageandtext.php?deleteid='.$id.'"></a>DELETE</button>*/
-						  
+						    
 						  
 						  }
 						  ?>
@@ -269,36 +265,8 @@ if(!isset($_SESSION['name'])){
 						<i class='bx bx-plus' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
-					<!-- <ul class="todo-list">
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-					</ul> -->
 					<table>
-						<!-- <thead>
-							<tr>
-								<th>User</th>
-								<th>Date Order</th>
-								<th>Status</th>
-							</tr>
-						</thead> -->
+						
 						<thead>
 						<tr>
     
@@ -308,48 +276,7 @@ if(!isset($_SESSION['name'])){
 							<th scope="col">SCORES</th>
 							</tr>
 						  </thead>
-						<!-- <tbody>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-						</tbody> -->
+						
 						<tbody>
 											<?php
 						$stmt = $db->runQuery("SELECT * FROM matchestable limit 5 ");
@@ -371,10 +298,7 @@ if(!isset($_SESSION['name'])){
 						<td>
 						</td>
 						</tr>';
-						/*<button name="update" class ="btn btn-primary"><a href="update.php?updateid='.$id.'"></a>UPDATE</button>
-						<button  name="delete" class ="btn btn-warning><a href="imageandtext.php?deleteid='.$id.'"></a>DELETE</button>*/
-
-
+						
 						}
 						?>
 												</tbody>
