@@ -3,30 +3,13 @@ include '../emg_admin/config.php';
 
 session_start();
 // After successful login
-$_SESSION['login_time'] = time();
 
 
-// Check if the user just logged in
-if (isset($_SESSION['name']) && isset($_SESSION['login_time'])) {
-	$sessionTimeoutSeconds = 60; // Set the session timeout to 30 minutes (1800 seconds)
+if(!isset($_SESSION['name'])){
+	header('location:../index.php');
+	exit();
 
-    // Calculate the elapsed time since login
-    $elapsedTime = time() - $_SESSION['login_time'];
-
-    // Check if the elapsed time exceeds the session timeout
-    if ($elapsedTime > $sessionTimeoutSeconds) {
-        // Session has timed out, perform necessary actions
-        // For example, you can unset session variables and redirect the user to the login page
-        unset($_SESSION['login_time']);
-        header("Location: ../index.php"); // Replace "login.php" with your actual login page URL
-        exit;
-    }
-} else {
-    // User is not logged in, handle accordingly
-	header('Location: ../index.php"');
 }
-
-
 
 
 ?>
@@ -49,7 +32,7 @@ if (isset($_SESSION['name']) && isset($_SESSION['login_time'])) {
 
 
 	<!-- SIDEBAR -->
-	<section id="sidebar">
+	<section id="sidebar" >
 		<a href="#" class="brand">
 			<i class='bx bxs-smile'></i>
 			<span class="text">MAKSports</span>
@@ -88,9 +71,9 @@ if (isset($_SESSION['name']) && isset($_SESSION['login_time'])) {
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="#">
+				<a href="resetpass.php">
 					<i class='bx bxs-cog' ></i>
-					<span class="text">Settings</span>
+					<span class="text">Change pass</span>
 				</a>
 			</li>
 			<li>
