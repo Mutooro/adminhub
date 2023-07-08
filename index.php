@@ -71,7 +71,7 @@ if(!isset($_SESSION['name'])){
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="resetpass.php">
+				<a href="#" id="resetPass">
 					<i class='bx bxs-cog' ></i>
 					<span class="text">Change pass</span>
 				</a>
@@ -320,6 +320,12 @@ if(!isset($_SESSION['name'])){
 document.getElementById('logoutLink').onclick = function(){
 	if(confirm("Are you sure u want to log out?")){
 		window.location.href="../logout.php";
+	}
+}
+
+document.getElementById('resetPass').onclick = function(){
+	if(confirm("Your about to reset your password!")){
+		window.location.href="resetpass2.php";
 	}
 }
 </script>
