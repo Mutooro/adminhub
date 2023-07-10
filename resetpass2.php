@@ -1,4 +1,8 @@
 <?php
+
+
+
+
 // Database credentials
 $host = 'localhost';
 $dbName = 'football';
