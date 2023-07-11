@@ -27,17 +27,33 @@ if(!isset($_SESSION['name'])){
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
 
 	<title>Dashboard</title>
+	<style>
+	.hover-effect:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+  transform: scale(1.1); 
+  transition: transform 0.3s ease;
+}
+.nav{
+	background-color: green !important;
+	
+}
+.side{
+	background-color:red;
+}
+
+</style>
 </head>
 <body>
 
 
 	<!-- SIDEBAR -->
-	<section id="sidebar" >
-		<a href="#" class="brand">
+	<section id="sidebar" style=" background: linear-gradient(to right, #FF0000, #00FF00, #000000);" >
+		<a href="#" class="brand" style=" background: linear-gradient(to right, #FF0000, #00FF00, #000000);">
 			<i class='bx bxs-smile'></i>
 			<span class="text">MAKSports</span>
 		</a>
-		<ul class="side-menu top" style="">
+		<ul class="side-menu top" >
 			<li class="active">
 				<a href="#">
 					<i class='bx bxs-dashboard' ></i>
@@ -92,9 +108,9 @@ if(!isset($_SESSION['name'])){
 	<!-- CONTENT -->
 	<section id="content">
 		<!-- NAVBAR -->
-		<nav>
-			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
+		<nav class="nav">
+			<i class='bx bx-menu'  style="color:white;"></i>
+			<a href="#" class="nav-link"  style="color:white;">Categories</a>
 			<form action="#">
 				<div class="form-input">
 					<input type="search"  placeholder="Search...">
@@ -107,7 +123,7 @@ if(!isset($_SESSION['name'])){
 			
 			
 	
-				<a href="#" style="font-size: larger;"><span class="bx bxs-user"></span > <?php echo $_SESSION['name']; ?></a>
+				<a href="#" style="font-size: larger; color: white;"><span class="bx bxs-user"></span > <?php echo $_SESSION['name']; ?></a>
 				
 			
 			
@@ -137,7 +153,7 @@ if(!isset($_SESSION['name'])){
 			</div>
 
 			<ul class="box-info">
-				<li>
+				<li onclick="location.href='../data.php'" class="hover-effect">
 					<i class='bx bxs-user' ></i>
 					<span class="text">
 						<h3><?php 
@@ -158,7 +174,7 @@ if(!isset($_SESSION['name'])){
 						<p>Players</p>
 					</span>
 				</li>
-				<li>
+				<li onclick="location.href='../selectedsquad.php'" class="hover-effect">
 					<i class='bx bxs-group' ></i>
 					<span class="text">
 						<h3>
@@ -180,7 +196,7 @@ if(!isset($_SESSION['name'])){
 						<p>Selected Players</p>
 					</span>
 				</li>
-				<li>
+				<li onclick="location.href='../standings.php'" class="hover-effect">
 					<i class='bx bxs-user' ></i>
 					<span class="text">
 						<h3>
