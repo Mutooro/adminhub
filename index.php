@@ -51,7 +51,9 @@ if(!isset($_SESSION['name'])){
 	<section id="sidebar" style=" background: linear-gradient(to right, #FF0000, #00FF00, #000000);" >
 		<a href="#" class="brand" style=" background: linear-gradient(to right, #FF0000, #00FF00, #000000);">
 			<i class='bx bxs-smile'></i>
-			<span class="text">MAKSports</span>
+
+			
+			<span class="text"> MakSports </span>
 		</a>
 		<ul class="side-menu top" >
 			<li class="active">
@@ -89,7 +91,7 @@ if(!isset($_SESSION['name'])){
 			<li>
 				<a href="#" id="resetPass">
 					<i class='bx bxs-cog' ></i>
-					<span class="text">Change pass</span>
+					<span class="text">Change password</span>
 				</a>
 			</li>
 			<li>

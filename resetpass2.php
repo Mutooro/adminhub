@@ -24,6 +24,8 @@ try {
     exit();
 }
 
+
+
 // Assuming you have an active database connection
 
 // Start or resume the session

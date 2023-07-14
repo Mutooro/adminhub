@@ -3,6 +3,8 @@
 
 include '../emg_admin/config.php';
 
+
+
 // Function to update the user's password in the database
 function updatePassword($email, $newPassword) {
     // Implement your own logic to update the password for the user
