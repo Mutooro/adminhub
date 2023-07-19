@@ -81,7 +81,7 @@ if(!isset($_SESSION['name'])){
 				</a>
 			</li>
 			<li>
-				<a href="../selectedsquad.php">
+				<a href="../data.php">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Team</span>
 				</a>
@@ -282,46 +282,18 @@ if(!isset($_SESSION['name'])){
 				</div>
 				<div class="todo">
 					<div class="head">
-						<h3>Results</h3>
+						<h3 style="color: indigo;">Top players</h3>
 						<i class='bx bx-plus' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
 					<table>
 						
 						<thead>
-						<tr>
-    
-							<th scope="col">HOME TEAM</th>
-							<th scope="col">SCORES</th>
-							<th scope="col">AWAY TEAM</th>
-							<th scope="col">SCORES</th>
-							</tr>
+						
 						  </thead>
 						
 						<tbody>
-											<?php
-						$stmt = $db->runQuery("SELECT * FROM matchestable limit 5 ");
-						$stmt->execute();
-						while($rows = $stmt->fetch()){
-						$id = $rows['id'];
-						$goalsfor1 = $rows['goalsfor'];
-						$goalsagainst1 = $rows['goalsagainst'];
-
-						$hometeam = $rows['hometeam'];
-						$awayteam = $rows['awayteam'];
-
-						echo '<tr>
-
-						<td>'.$hometeam.'</td>
-						<td>'.$goalsfor1.'</td>
-						<td>'.$awayteam.'</td>
-						<td>'.$goalsagainst1.'</td>
-						<td>
-						</td>
-						</tr>';
-						
-						}
-						?>
+								
 												</tbody>
 					</table>
 				</div>
