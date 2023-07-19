@@ -53,7 +53,7 @@ if(!isset($_SESSION['name'])){
 			<i class='bx bxs-smile'></i>
 
 			
-			<span class="text"> MakSports </span>
+			<span class="text" style="color:white"> MakSports Sytem </span>
 		</a>
 		<ul class="side-menu top" >
 			<li class="active">
