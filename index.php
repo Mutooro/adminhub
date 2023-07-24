@@ -232,7 +232,7 @@ if(!isset($_SESSION['name'])){
 					</div>
 					<table>
 					
-						<thead>
+						<thead class="table-dark">
 							<tr>
 							
 							  <th scope="col"> TEAMS</th>
@@ -293,8 +293,8 @@ if(!isset($_SESSION['name'])){
 						  </thead>
 						
 						<tbody>
-								
-												</tbody>
+				
+						</tbody>
 					</table>
 				</div>
 			</div>
