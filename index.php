@@ -5,11 +5,11 @@ session_start();
 // After successful login
 
 
-if(!isset($_SESSION['name'])){
-	header('location:../index.php');
-	exit();
+// if(!isset($_SESSION['name'])){
+// 	header('location:../index.php');
+// 	exit();
 
-}
+// }
 
 
 ?>
