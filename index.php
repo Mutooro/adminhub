@@ -5,11 +5,11 @@ session_start();
 // After successful login
 
 
-// if(!isset($_SESSION['name'])){
-// 	header('location:../index.php');
-// 	exit();
+if(!isset($_SESSION['name'])){
+	header('location:../index.php');
+	exit();
 
-// }
+}
 
 
 ?>
@@ -50,10 +50,11 @@ session_start();
 	<!-- SIDEBAR -->
 	<section id="sidebar" style=" background: linear-gradient(to right, #FF0000, #00FF00, #000000);" >
 		<a href="#" class="brand" style=" background: linear-gradient(to right, #FF0000, #00FF00, #000000);">
-			<i class='bx bxs-smile'></i>
+			<!-- <i class='bx bxs-smile'></i> -->
+			<img src="../img/muk.jpeg" style="height:100%; width:20% padding:10px; margin:15px">
 
 			
-			<span class="text" style="color:white"> MakSports Sytem </span>
+			<span class="text" style="color:white"> Makarere Sports System </span>
 		</a>
 		<ul class="side-menu top" >
 			<li class="active">
