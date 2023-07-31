@@ -70,7 +70,7 @@ if(!isset($_SESSION['name'])){
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="../playerrate.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Analytics</span>
 				</a>
@@ -115,10 +115,7 @@ if(!isset($_SESSION['name'])){
 			<i class='bx bx-menu'  style="color:white;"></i>
 			<a href="#" class="nav-link"  style="color:white;">Categories</a>
 			<form action="#">
-				<div class="form-input">
-					<input type="search"  placeholder="Search...">
-					<button type="submit" name="search" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
+				
 			</form>
 
 			<input type="checkbox" id="switch-mode" hidden>
@@ -137,18 +134,6 @@ if(!isset($_SESSION['name'])){
 		<!-- MAIN -->
 		<main>
 			<div class="head-title">
-				<div class="left">
-					<h1>Dashboard</h1>
-					<ul class="breadcrumb">
-						<li>
-							<a href="#">Dashboard</a>
-						</li>
-						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Home</a>
-						</li>
-					</ul>
-				</div>
 				<a href="#" class="btn-download">
 					<i class='bx bxs-cloud-download' ></i>
 					<span class="text">Download PDF</span>
@@ -287,16 +272,115 @@ if(!isset($_SESSION['name'])){
 						<i class='bx bx-plus' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
-					<table>
-						
-						<thead>
-						
-						  </thead>
-						
-						<tbody>
-				
-						</tbody>
-					</table>
+					<table class="table table-striped table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Rank</th>
+                    <th scope="col">Player</th>
+                  
+                    <th scope="col">Goals</th>
+                    <th scope="col">Assists</th>
+                    
+                    <th scope="col">Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // Database connection parameters
+                $host = 'localhost';
+                $username = 'root';
+                $password = '';
+                $database = 'football';
+
+                // PDO connection
+                try {
+                    $conn = new PDO("mysql:host=$host;dbname=$database", $username, $password);
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                    // Fetch data from rateplayer table and order by rating descending
+                    $sql = "SELECT * FROM rateplayer ORDER BY (
+                        (goals * 5) + (assists * 1.5) + 
+                        CASE
+                            WHEN yellow_cards = 0 THEN 4
+                            WHEN yellow_cards < 4 THEN 3
+                            ELSE 0
+                        END +
+                        CASE
+                            WHEN red_cards = 0 THEN 4
+                            WHEN red_cards < 2 THEN 3
+                            ELSE 0
+                        END +
+                        (passes_completed * 3) + (minutes_played * 1) + (motd * 3)
+                    ) / 10 DESC";
+                    $stmt = $conn->query($sql);
+                    
+
+                    $rank = 1;
+
+                    // Display the data in the table
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        echo "<tr>";
+                
+                        echo "<th scope='row'>" . $rank. "</th>";
+                        
+                        echo "<td>" . $row['name'] . "</td>";
+                        
+                        echo "<td>" . $row['goals'] . "</td>";
+                        echo "<td>" . $row['assists'] . "</td>";
+                        
+                        
+                    
+                        // Calculate the Rating based on your logic
+                        $goals = (int)$row['goals'];
+                        $assists = (int)$row['assists'];
+                        $yellowCards = (int)$row['yellow_cards'];
+                        $redCards = (int)$row['red_cards'];
+                        $passesCompleted = (int)$row['passes_completed'];
+                        $minutesPlayed = (int)$row['minutes_played'];
+                        $motm = (int)$row['motd'];
+                        $app = (int)$row['appearances'];
+                    
+                        // Calculate the weight for yellow cards based on your criteria
+                        if ($yellowCards === 0) {
+                            $yellowCardsWeight = 4;
+                        } elseif ($yellowCards < 4) {
+                            $yellowCardsWeight = 3;
+                        } else {
+                            $yellowCardsWeight = 0;
+                        }
+                    
+                        // Calculate the weight for red cards based on your criteria
+                        if ($redCards === 0) {
+                            $redCardsWeight = 4;
+                        } elseif ($redCards < 2) {
+                            $redCardsWeight = 3;
+                        } else {
+                            $redCardsWeight = 0;
+                        }
+                        if($app==0){
+                            $rating = 0;
+                        } else{
+                    
+                        // Calculate the Rating
+                        $rating = ($goals * 5 + $assists * 1.5 + $yellowCardsWeight + $redCardsWeight + $passesCompleted * 3 + $minutesPlayed * 1 + $motm * 3) / 100;
+                    }
+                        // Format the rating to 1 decimal place
+                        $formattedRating = number_format($rating, 1);
+                    
+                        echo "<td>" . $formattedRating . "</td>";
+                        echo "</tr>";
+
+                        $rank++;
+                    }
+                } catch (PDOException $e) {
+                    echo "Error: " . $e->getMessage();
+                }
+
+                // Close the database connection
+                $conn = null;
+                ?>
+            </tbody>
+        </table>
 				</div>
 			</div>
 		</main>
