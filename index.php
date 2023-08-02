@@ -118,8 +118,7 @@ if(!isset($_SESSION['name'])){
 				
 			</form>
 
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
+			
 			
 			
 	
